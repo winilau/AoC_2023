@@ -25,6 +25,9 @@ def findCalibrationSum(arr):
 # print(findCalibrationSum(test))
 print(findCalibrationSum(input))
 
+# count spelled out numbers as digits too
+# note that a part of a number can be counted as another one too e.g. "eighthree" -> 83; "sevenine" -> 79
+
 # part 2
 def converDigits(arr):
     digits = {
