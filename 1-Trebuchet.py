@@ -2,7 +2,7 @@
 # find the sum of each calibration value of each line
 # e.g. 1abc2 -> 12 treb7uchet -> 77
 
-text_file = open("1-input.txt","r")
+text_file = open("inputs/1-input.txt","r")
 input = text_file.read().split('\n')
 
 # part 1

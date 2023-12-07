@@ -1,4 +1,4 @@
-text_file = open("2-input.txt","r")
+text_file = open("inputs/2-input.txt","r")
 input = text_file.read().split('\n')
 
 
@@ -26,7 +26,7 @@ def possibleGames(input):
             res += i + 1
     return res
 
-# print(possibleGames(input))
+print(possibleGames(input))
 
 # Part 2 --
 
