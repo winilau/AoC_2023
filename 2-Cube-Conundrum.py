@@ -1,17 +1,15 @@
 text_file = open("inputs/2-input.txt","r")
-input = text_file.read().split('\n')
-
+input = text_file.read().split('\n')[:-1]
 
 # Part 1 --
 
 # which games are possible if there are only 12 red cubes, 13 green cubes, and 14 blue cubes
 # return the sum of ID of the possible games
+
 def possibleGames(input):
     res = 0
     possible = {'red': 12, 'green': 13, 'blue': 14}
     for i, game in enumerate(input):
-        if not game:
-            continue
         subsets = game.split(": ")[1].split("; ")
         for handfull in subsets:
             cubes = handfull.split(", ")
@@ -30,9 +28,12 @@ print(possibleGames(input))
 
 # Part 2 --
 
+# get the fewest number of cubes possible to make each game possible (i.e. max of each handful for each colour)
+# the power = max of each colour multiplied together per game
+# get sum of the power of each game
+
 def fewestPossible(input):
     res = 0
-    possible = {'red': 12, 'green': 13, 'blue': 14}
     for game in input:
         if not game:
             continue

@@ -1,11 +1,12 @@
+text_file = open("inputs/1-input.txt","r")
+input = text_file.read().split('\n')[:-1]
+
+# Part 1 --
+
 # the calibration value can be found by combining the first digit and the last digit
 # find the sum of each calibration value of each line
 # e.g. 1abc2 -> 12 treb7uchet -> 77
 
-text_file = open("inputs/1-input.txt","r")
-input = text_file.read().split('\n')
-
-# part 1
 def findCalibrationSum(arr):
     res = 0
     for line in arr:
@@ -25,21 +26,14 @@ def findCalibrationSum(arr):
 # print(findCalibrationSum(test))
 print(findCalibrationSum(input))
 
+# Part 2 --
+
 # count spelled out numbers as digits too
 # note that a part of a number can be counted as another one too e.g. "eighthree" -> 83; "sevenine" -> 79
 
-# part 2
 def converDigits(arr):
-    digits = {
-    'one': '1',
-    'two': '2',
-    'three': '3',
-    'four': '4',
-    'five': '5',
-    'six': '6',
-    'seven': '7',
-    'eight': '8',
-    'nine': '9'}
+    digits = {'one': '1', 'two': '2', 'three': '3', 'four': '4',
+    'five': '5', 'six': '6', 'seven': '7', 'eight': '8', 'nine': '9'}
 
     for n,line in enumerate(arr):
         i = 0
@@ -58,4 +52,6 @@ def converDigits(arr):
 
 # test = ["two1nine", "eightwothree", "abcone2threexyz", "xtwone3four", "4nineeightseven2", "zoneight234", "7pqrstsixteen"]
 # print(findCalibrationSum(converDigits(test)))
+
+# convert the spelled out digits to numbers first and then run the method for part 1
 print(findCalibrationSum(converDigits(input)))
