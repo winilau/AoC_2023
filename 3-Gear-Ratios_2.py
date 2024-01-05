@@ -1,12 +1,14 @@
-text_file = open("inputs/3-input.txt","r")
+text_file = open("inputs/3-input.txt", "r")
 input = text_file.read().split('\n')[:-1]
 
 # Part 2 --
 
-# a gear is any * symbol that is adjacent to exactly two part numbers 
+# a gear is any * symbol that is adjacent to exactly two part numbers
 # gear ratio is the result of multiplying those two numbers together
 
 # helper to get gear ration from * symbol
+
+
 def getGearRatio(symbol_row, symbol_col, matrix):
     count, gearRatio = 0, 0
     num_locations = []
@@ -21,7 +23,7 @@ def getGearRatio(symbol_row, symbol_col, matrix):
             start = c
             while start >= 0 and matrix[r][start].isdigit():
                 start -= 1
-            
+
             start += 1
             num = 0
             while start < COLS and matrix[r][start].isdigit():
@@ -35,14 +37,15 @@ def getGearRatio(symbol_row, symbol_col, matrix):
 def sumGearRation(input):
     res = 0
     ROWS, COLS = len(input), len(input[0])
-    matrix =[list(line) for line in input]
+    matrix = [list(line) for line in input]
     for r in range(0, ROWS):
         for c in range(0, COLS):
             if matrix[r][c] == '*':
                 res += getGearRatio(r, c, matrix)
     return res
 
-test = ["467..114..", "...*......", "..35..633.", "......#...", "617*......", 
+
+test = ["467..114..", "...*......", "..35..633.", "......#...", "617*......",
         ".....+.58.", "..592.....", "......755.", "...$.*....", ".664.598.."]
 print(sumGearRation(test))
 print(sumGearRation(input))

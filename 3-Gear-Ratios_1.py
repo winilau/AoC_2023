@@ -1,4 +1,4 @@
-text_file = open("inputs/3-input.txt","r")
+text_file = open("inputs/3-input.txt", "r")
 input = text_file.read().split('\n')[:-1]
 
 # Part 1 --
@@ -7,6 +7,8 @@ input = text_file.read().split('\n')[:-1]
 # return sum of all part numbers
 
 # helper to check if a number is a part number (check surrounding symbols)
+
+
 def checkIfPartNumber(row, start_col, end_col, matrix):
     ROWS, COLS = len(matrix), len(matrix[0])
     for r in range(row - 1, row + 2):
@@ -15,10 +17,11 @@ def checkIfPartNumber(row, start_col, end_col, matrix):
                 return True
     return False
 
+
 def sumPartNumbers(input):
     res = 0
     ROWS, COLS = len(input), len(input[0])
-    matrix =[list(line) for line in input]
+    matrix = [list(line) for line in input]
     num, start = 0, 1
     for r in range(0, ROWS):
         num, start = 0, 0
@@ -26,15 +29,18 @@ def sumPartNumbers(input):
             if matrix[r][c].isdigit():
                 num = (num * 10) + int(matrix[r][c])
                 if c == COLS - 1:
-                    res += num if checkIfPartNumber(r, start, c - 1, matrix) == True else 0
+                    res += num if checkIfPartNumber(r,
+                                                    start, c - 1, matrix) == True else 0
             else:
                 if num != 0:
                     # found current number,  check surround to see if it's a "part number"
-                    res += num if checkIfPartNumber(r, start, c - 1, matrix) == True else 0
+                    res += num if checkIfPartNumber(r,
+                                                    start, c - 1, matrix) == True else 0
                 num, start = 0, c + 1
     return res
 
-test = ["467..114..", "...*......", "..35..633.", "......#...", "617*......", 
+
+test = ["467..114..", "...*......", "..35..633.", "......#...", "617*......",
         ".....+.58.", "..592.....", "......755.", "...$.*....", ".664.598.."]
 print(sumPartNumbers(test))
 print(sumPartNumbers(input))
